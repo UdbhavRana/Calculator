@@ -302,9 +302,30 @@
             0
         );
         const waterusage = totalwatertodrink + totalwatertoshower + totalwatertoflush + totalwatertoeat;
-        // Variable for diet type
         
+        const time_used = 4; // hours
+        const per_person = 0.0002; // kg/hr per person
+        const people = 1; // or set dynamically
+        const mass_flowrate_LPG = 1.5;
+        const density_LPG = 1.898;
+        const co2_LPG = 1.51;
+        const distance_rickshaw = 1.2;
+        const no_rides_rickshaw = 4;
+        
+        const mass_LPG_used = time_used * per_person * people; // in kg
+        const co2_factor_LPG = 3.0; // kg CO₂ per kg LPG burned (typical IPCC value)
+        const co2emission_mess_stove = mass_LPG_used * co2_factor_LPG;
+        
+        const vol_flowrate_LPG = (mass_flowrate_LPG) / (density_LPG * 3600);
+        const co2emission_LPG_value = vol_flowrate_LPG * co2_LPG * 1000;
+        
+        //const co2emission_mess_stove = time_used * per_person * co2emission_LPG_value * 3600;
 
+        const co2emission_rickshaw = distance_rickshaw * no_rides_rickshaw * 0.079;
+        //avg emission from rickshaw 79 gm/km
+        
+        
+        
         // Calculations
         const electricity = elec.toFixed(2);
         const scope2 = s.toFixed(2);
