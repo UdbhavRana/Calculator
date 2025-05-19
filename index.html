@@ -289,13 +289,14 @@
         const noofflush = 7;
         const wateramount (l)= 40;
         const totalwatertoflush = noofflush * wateramaount;
+        const vegan = 1000, vegetarian = 1200, pescatarian = 1300, egetarian = 1400, whiteMeatDiet = 1500, redMeatDiet = 1600;
         const totalwatertoeat = 7 * (
-            dietType === "Vegan" ? vegan : 1000 ;
-            dietType === "Vegetarian" ? vegetarian : 1500 ;
-            dietType === "Pescatarian" ? pescatarian : 2000 ;
-            dietType === "Egetarian" ? egetarian : 1800 ;
-            dietType === "White Meat Diet" ? whiteMeatDiet : 2000 ;
-            dietType === "Red Meat Diet" ? redMeatDiet : 2500 ;
+            dietType === "Vegan" ? vegan : 
+            dietType === "Vegetarian" ? vegetarian :
+            dietType === "Pescatarian" ? pescatarian : 
+            dietType === "Egetarian" ? egetarian : 
+            dietType === "White Meat Diet" ? whiteMeatDiet : 
+            dietType === "Red Meat Diet" ? redMeatDiet : 
             0
         );
         const waterusage = totalwatertodrink + totalwatertoshower + totalwatertoflush + totalwatertoeat;
