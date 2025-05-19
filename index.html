@@ -281,14 +281,16 @@
         const egetarian = 158.812;
         const whiteMeatDiet = 486.237;
         const redMeatDiet = 494.167;
- 
+
+        const dietType = inputs.dietType; // Use the actual input value for diet type
+        
         const totalwatertodrink = 35;
         const flowrate  = 6;
         const actualshoweron = 0.7;
         const totalwatertoshower = flowrate * inputs.bathduration * actualshoweron * inputs.showers;
         const noofflush = 7;
         const wateramount = 40;
-        const totalwatertoflush = noofflush * wateramaount;
+        const totalwatertoflush = noofflush * wateramount;
         const vegan = 1000, vegetarian = 1200, pescatarian = 1300, egetarian = 1400, whiteMeatDiet = 1500, redMeatDiet = 1600;
         const totalwatertoeat = 7 * (
             dietType === "Vegan" ? vegan : 
@@ -301,7 +303,7 @@
         );
         const waterusage = totalwatertodrink + totalwatertoshower + totalwatertoflush + totalwatertoeat;
         // Variable for diet type
-        const dietType = inputs.dietType; // Use the actual input value for diet type
+        
 
         // Calculations
         const electricity = elec.toFixed(2);
