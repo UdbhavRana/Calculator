@@ -270,7 +270,7 @@
         // Calculate outing emissions
         const outingEmissions = ((PARAMS.outingEmissionFactors[inputs.outingType] * inputs.outingsMonth) + (PARAMS.mealEmissionFactors[inputs.dietType] * inputs.eatOutMonth)) / 365 + 1.4;
         //const waterusage = (35 + (0.7 * inputs.bathDuration * 42 * inputs.showers) + 1500) / 7;
-        const wasteg = ((0.25 * inputs.foodOrders) + (inputs.ecommerce * 0.55));
+        
         const elec = ((0.25 * inputs.hostelNo) + (inputs.credits * 0.1) + (inputs.timeLabs * 0.23) + (inputs.timeLibrary * 0.37) + (inputs.timeGymkhana * 0.16));
         const s = ((0.82 * elec) + 0.3);
         // Constants
@@ -335,7 +335,24 @@
         const no_socks = 4;
         const kgco2_per_socks = 1;
         const c95 = ((no_tshirt * kgco2_per_tshirt) + (no_jeans * kgco2_per_jeans) + (no_dress * kgco2_per_dress) + (no_jacket * kgco2_per_jacket) + (no_socks * kgco2_per_socks))/365 ;
+
+        const weight_spoon = 0.0025;
+        const no_spoon = 2;
+        const carton_weight_plastic = 0.02;
+        const carton_weight_paper = 0.2;
+        const carry_bag_weight = 0.006;
+        const good_plastic_weight = 0.35;
         
+        const wasteg = (((((weight_spoon * no_spoon) + carton_weight_plastic + carton_weight_paper + carry_bag_weight) * inputs.foodOrders) * 52) + ((good_plastic_weight * inputs.ecommerce * 4)*12))/365 + 
+                    (
+            dietType === "Vegan" ? vegan :
+            dietType === "Vegetarian" ? vegetarian :
+            dietType === "Pescatarian" ? pescatarian :
+            dietType === "Egetarian" ? egetarian :
+            dietType === "White Meat Diet" ? whiteMeatDiet :
+            dietType === "Red Meat Diet" ? redMeatDiet :
+            0
+        ) + 0.2;
         
         // Calculations
         const electricity = elec.toFixed(2);
