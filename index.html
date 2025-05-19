@@ -89,7 +89,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>GESH x Sustainability | Carbon Footprint Calculator</h1>
+        <h1>GESH x Sustainability Cell | Carbon Footprint Calculator</h1>
         
         <form id="calculatorForm">
             <!-- Academic & Hostel Details -->
@@ -274,7 +274,7 @@
         const elec = ((0.25 * inputs.hostelNo) + (inputs.credits * 0.1) + (inputs.timeLabs * 0.23) + (inputs.timeLibrary * 0.37) + (inputs.timeGymkhana * 0.16));
         const s = ((0.82 * elec) + 0.3);
         // Constants
-        const c95 = 0.3342465753;
+        
         const vegan = 158.942;
         const vegetarian = 112.862;
         const pescatarian = 470.637;
@@ -323,7 +323,18 @@
 
         const co2emission_rickshaw = distance_rickshaw * no_rides_rickshaw * 0.079;
         //avg emission from rickshaw 79 gm/km
-        
+
+        const no_tshirt = 10;
+        const kgco2_per_tshirt = 2.5;
+        const no_jeans = 3;
+        const kgco2_per_jeans = 11.5;
+        const no_dress = 0;
+        const kgco2_per_dress = 16;
+        const no_jacket = 3;
+        const kgco2_per_jacket = 19.5;
+        const no_socks = 4;
+        const kgco2_per_socks = 1;
+        const c95 = ((no_tshirt * kgco2_per_tshirt) + (no_jeans * kgco2_per_jeans) + (no_dress * kgco2_per_dress) + (no_jacket * kgco2_per_jacket) + (no_socks * kgco2_per_socks))/365 ;
         
         
         // Calculations
